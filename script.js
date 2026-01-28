@@ -43,9 +43,38 @@ function renderCart() {
   });
 }
 function renderActiveOrder() {
-  const itemsText = currentOrder.items.map(item => `${item.name} x ${item.qty}`).join(', ');
+  const items = (currentOrder.placedItems && currentOrder.placedItems.length) ? currentOrder.placedItems : currentOrder.items;
+  const itemsText = items.map(item => `${item.name} x ${item.qty}`).join(', ');
   document.getElementById("orderItemName").innerText = itemsText;
 
   document.getElementById("orderAddressText").innerText = currentOrder.address;
   updateTimeline(currentOrder.status);
+}
+
+function placeOrder() {
+  const address = document.getElementById("orderAddress").value.trim();
+  if (currentOrder.items.length === 0) return alert("Cart is empty. Add items first.");
+  if (!address) return alert("Please enter a delivery address.");
+
+  // Snapshot items for the active order, set address/status
+  currentOrder.placedItems = currentOrder.items.slice();
+  currentOrder.address = address;
+  currentOrder.status = 0; // Order placed
+
+  // Show active order UI
+  renderActiveOrder();
+  document.getElementById("activeOrder").classList.remove("hidden");
+
+  // Add to order history
+  const ul = document.getElementById("orderHistory");
+  const li = document.createElement("li");
+  li.innerText = `${currentOrder.placedItems.map(i => `${i.name} x ${i.qty}`).join(', ')} — ${address}`;
+  ul.prepend(li);
+
+  // Clear cart inputs and data (keep placedItems for active order display)
+  currentOrder.items = [];
+  renderCart();
+  document.getElementById("orderAddress").value = "";
+
+  alert("Order placed!");
 }
