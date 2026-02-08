@@ -39,7 +39,7 @@ body.dark .card {
 .hidden { display: none !important; }
 
 /* INPUTS */
-input {
+input , select {
   width: 100%;
   padding: 14px;
   margin: 10px 0;
@@ -169,16 +169,6 @@ body.dark li {
   gap: 10px;
 }
 
-select {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  cursor: pointer;
-}
-
 label {
   display: block;
   margin-bottom: 6px;
@@ -221,5 +211,6 @@ label {
 
 /* SAFE AREA FOR NOTCHES */
 body { padding-bottom: env(safe-area-inset-bottom); }
+
 
 
