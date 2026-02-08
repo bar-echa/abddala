@@ -69,7 +69,7 @@ function placeOrder() {
   // Add to order history
   const ul = document.getElementById("orderHistory");
   const li = document.createElement("li");
-  li.innerText = `${currentOrder.placedItems.map(i => `${i.name} x ${i.qty} x ${i.market}`).join(', ')} — ${address}`;
+  li.innerText = `${currentOrder.placedItems.map(i => `${i.name} : ${i.qty} => ${i.market}`).join(', ')} — ${address}`;
   ul.prepend(li);
 
   // Clear cart inputs and data (keep placedItems for active order display)
@@ -79,6 +79,7 @@ function placeOrder() {
 
   alert("Order placed!");
 }
+
 
 
 
