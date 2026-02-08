@@ -27,9 +27,10 @@ let currentOrder = { items: [], address: "", status: 0, rider: null };
 function addItem() {
   const name = document.getElementById("itemName").value;
   const qty = parseInt(document.getElementById("itemQty").value);
-  if (!name || qty <= 0) return alert("Enter item name and valid quantity");
+  const addres = document.getElementById("fruit").value;
+  if (!name || qty <= 0 || !addres) return alert("Enter item name and valid quantity");
 
-  currentOrder.items.push({ name, qty });
+  currentOrder.items.push({ name, qty, addres });
   renderCart();
 }
 
@@ -38,13 +39,13 @@ function renderCart() {
   ul.innerHTML = "";
   currentOrder.items.forEach(item => {
     const li = document.createElement("li");
-    li.innerText = `${item.name} x ${item.qty}`;
+    li.innerText = `${item.name} x ${item.qty} x ${item.addres}`;
     ul.appendChild(li);
   });
 }
 function renderActiveOrder() {
   const items = (currentOrder.placedItems && currentOrder.placedItems.length) ? currentOrder.placedItems : currentOrder.items;
-  const itemsText = items.map(item => `${item.name} x ${item.qty}`).join(', ');
+  const itemsText = items.map(item => `${item.name} x ${item.qty} x ${item.addres}`).join(', ');
   document.getElementById("orderItemName").innerText = itemsText;
 
   document.getElementById("orderAddressText").innerText = currentOrder.address;
@@ -68,7 +69,7 @@ function placeOrder() {
   // Add to order history
   const ul = document.getElementById("orderHistory");
   const li = document.createElement("li");
-  li.innerText = `${currentOrder.placedItems.map(i => `${i.name} x ${i.qty}`).join(', ')} — ${address}`;
+  li.innerText = `${currentOrder.placedItems.map(i => `${i.name} x ${i.qty} x ${i.addres}`).join(', ')} — ${address}`;
   ul.prepend(li);
 
   // Clear cart inputs and data (keep placedItems for active order display)
@@ -78,3 +79,4 @@ function placeOrder() {
 
   alert("Order placed!");
 }
+
