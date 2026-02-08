@@ -169,7 +169,22 @@ body.dark li {
   gap: 10px;
 }
 
-/* RESPONSIVE STYLES */
+select {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
 
 /* SMALL PHONES */
 @media (max-width: 480px) {
@@ -206,3 +221,4 @@ body.dark li {
 
 /* SAFE AREA FOR NOTCHES */
 body { padding-bottom: env(safe-area-inset-bottom); }
+
