@@ -39,7 +39,7 @@ function renderCart() {
   ul.innerHTML = "";
   currentOrder.items.forEach(item => {
     const li = document.createElement("li");
-    li.innerText = `${item.name} x ${item.qty} x ${item.market}`;
+    li.innerText = `${item.name} : ${item.qty} => ${item.market}`;
     ul.appendChild(li);
   });
 }
@@ -79,6 +79,7 @@ function placeOrder() {
 
   alert("Order placed!");
 }
+
 
 
 
