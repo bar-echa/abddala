@@ -170,7 +170,7 @@ body.dark li {
 }
 
 select {
-  width: 200px;
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   border-radius: 6px;
@@ -221,4 +221,5 @@ label {
 
 /* SAFE AREA FOR NOTCHES */
 body { padding-bottom: env(safe-area-inset-bottom); }
+
 
